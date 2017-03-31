@@ -1,8 +1,10 @@
-let initialState = {
+import { combineReducers } from 'redux';
+
+let initialHeroesState = {
   heroes: []
 }
 
-function heroesReducer(state = initialState, action){
+const heroesReducer = (state = initialHeroesState, action) => {
   switch (action.type) {
     case "FETCH_HEROES_PENDING":
       return {...state}
@@ -14,4 +16,27 @@ function heroesReducer(state = initialState, action){
   }
 }
 
-export default heroesReducer;
+let initialHeroState = {
+  hero: {
+    name: ""
+  }
+}
+
+const heroReducer = (state = initialHeroState, action) => {
+  switch (action.type) {
+    case "FETCH_HERO":
+      return {...state}
+    case "FETCH_HERO_FULFILLED":
+      let hero = action.payload.data.data;
+      return {...state,hero}
+    default:
+      return state;
+  }
+}
+
+const appReducer = combineReducers({
+    heroesReducer : heroesReducer,
+    heroReducer : heroReducer
+});
+
+export default appReducer;
