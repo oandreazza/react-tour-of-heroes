@@ -1,5 +1,5 @@
-import {connect} from 'react-redux';
 import {getUser,updateHero} from '../action/heroes';
+import { connect } from 'react-redux';
 import HeroEdit from '../components/HeroEdit'
 
 
