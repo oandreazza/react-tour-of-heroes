@@ -1,21 +1,42 @@
 import React from 'react';
 import { Field, reduxForm} from 'redux-form';
 
-const HeroForm = ({handleSubmit}) => {
+const HeroForm = ({handleSubmit, valid}) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        Name:
-        <Field component="input" type="text" name="name"/>
-        <button type="submit">Save</button>
+        <Field component={renderForm} type="text" name="name" placeholder="Name"/>
+        <button type="submit" disabled={!valid}>Save</button>
       </form>
     </div>
   )
 }
 
-HeroForm = reduxForm({
+let renderForm = (field) => {
+  console.log(field);
+  return (
+    <div>
+      <label>{field.placeholder}</label>
+      <input {...field.input} />
+      {field.meta.error && field.meta.touched && <span>{field.meta.error}</span>}
+
+    </div>
+
+  )
+
+}
+
+const validate = (values) => {
+  let errors = {};
+  if(!values.name)
+    errors.name = "Enter name";
+
+  return errors;
+
+}
+
+export default reduxForm({
   form: 'hero',
   enableReinitialize: true,
-})(HeroForm);
-
-export default HeroForm;
+  validate
+})(HeroForm);;

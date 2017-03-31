@@ -20,3 +20,10 @@ export function updateHero(hero){
     payload: axios.post(`http://localhost/api/heroes/update`,hero)
   }
 }
+
+export function saveHero(hero){
+  return {
+    type: "SAVE_HERO",
+    payload: axios.post('http://localhost/api/heroes/save',hero)
+  }
+}

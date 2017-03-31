@@ -2,6 +2,7 @@ import React from 'react';
 import {Table} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+
 class HeroList extends React.Component{
   constructor(props) {
     super(props);
@@ -16,6 +17,11 @@ class HeroList extends React.Component{
     const {data} = this.props;
     return(
       <div>
+        <Link to="/heroes/add">
+          <button>
+              add
+          </button>
+        </Link>
         <h1>
           Hero List
         </h1>
