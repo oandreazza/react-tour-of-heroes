@@ -13,3 +13,10 @@ export function getUser(id){
     payload: axios.get(`http://localhost/api/heroes/${id}`)
   }
 }
+
+export function updateHero(hero){
+  return {
+    type: "UPDATE_HERO",
+    payload: axios.post(`http://localhost/api/heroes/update`,hero)
+  }
+}

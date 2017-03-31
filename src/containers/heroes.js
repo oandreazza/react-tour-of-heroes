@@ -5,7 +5,7 @@ import {getHeroes} from '../action/heroes'
 
 const mapStateToProps = (state) =>(
   {
-    data: state.heroesReducer
+    data: state.appReducer.heroesReducer
   }
 )
 
