@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 class HeroList extends React.Component{
   constructor(props) {
     super(props);
-    this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentWillMount = this.componentWillMount.bind(this);
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.props.getHeroes();
   }
 

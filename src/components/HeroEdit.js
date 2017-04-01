@@ -5,7 +5,7 @@ class HeroEdit extends Component {
     constructor(props) {
         super(props);
         this.componentWillMount = this.componentWillMount.bind(this);
-        this.submit = this.submit.bind(this);
+        this.update = this.update.bind(this);
     }
 
     componentWillMount() {
@@ -13,8 +13,11 @@ class HeroEdit extends Component {
         this.props.getUser(param);
     }
 
-    submit = (values) => {
-        this.props.updateHero(values);
+    update = (values) => {
+        this.props.updateHero(values)
+          .then( () => {
+            this.props.history.push('/heroes')
+          });
     }
 
     back = () => {
@@ -28,7 +31,7 @@ class HeroEdit extends Component {
         }
         return (
             <div>
-                <HeroForm action="Edit" handleBack={this.back} {...initialValues} onSubmit={this.submit}/>
+                <HeroForm action="Edit" handleBack={this.back} {...initialValues} onSubmit={this.update}/>
             </div>
         )
     }

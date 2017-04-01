@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(getUser(id))
     },
     updateHero: (hero) => {
-      dispatch(updateHero(hero))
+      return dispatch(updateHero(hero))
     }
   }
 }

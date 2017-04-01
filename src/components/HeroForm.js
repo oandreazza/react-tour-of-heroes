@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm} from 'redux-form';
-import {FormGroup,ControlLabel,FormControl,HelpBlock, Button, Panel} from 'react-bootstrap';
+import {FormGroup,ControlLabel,FormControl,HelpBlock, Button,ButtonToolbar, Panel} from 'react-bootstrap';
 
 const HeroForm = ({handleSubmit, valid, handleBack, action}) => {
   return (
@@ -8,8 +8,10 @@ const HeroForm = ({handleSubmit, valid, handleBack, action}) => {
       <Panel header={`${action} Hero`} bsStyle="primary">
         <form onSubmit={handleSubmit}>
           <Field component={renderForm} type="text" name="name" placeholder="Name"/>
-          <Button onClick={handleBack}>Cancel</Button>
-          <Button type="submit" bsStyle="primary" disabled={!valid}>Save</Button>
+          <ButtonToolbar>
+            <Button onClick={handleBack}>Cancel</Button>
+            <Button type="submit" bsStyle="primary" disabled={!valid}>Save</Button>
+          </ButtonToolbar>
         </form>
       </Panel>
     </div>

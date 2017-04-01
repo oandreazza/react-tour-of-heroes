@@ -10,8 +10,10 @@ class HeroAdd extends Component{
   }
 
   save = (values) => {
-    this.props.saveHero(values);
-    this.props.history.push('/heroes');
+    this.props.saveHero(values).then(() => {
+          this.props.history.push('/heroes');
+    });
+
   }
 
   back = () => {
