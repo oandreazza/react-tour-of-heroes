@@ -1,27 +1,28 @@
 import React from 'react';
 import { Field, reduxForm} from 'redux-form';
+import {FormGroup,ControlLabel,FormControl,HelpBlock, Button, Panel} from 'react-bootstrap';
 
-const HeroForm = ({handleSubmit, valid}) => {
+const HeroForm = ({handleSubmit, valid, handleBack, action}) => {
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <Field component={renderForm} type="text" name="name" placeholder="Name"/>
-        <button type="submit" disabled={!valid}>Save</button>
-      </form>
+      <Panel header={`${action} Hero`} bsStyle="primary">
+        <form onSubmit={handleSubmit}>
+          <Field component={renderForm} type="text" name="name" placeholder="Name"/>
+          <Button onClick={handleBack}>Cancel</Button>
+          <Button type="submit" bsStyle="primary" disabled={!valid}>Save</Button>
+        </form>
+      </Panel>
     </div>
   )
 }
 
 let renderForm = (field) => {
-  console.log(field);
   return (
-    <div>
-      <label>{field.placeholder}</label>
-      <input {...field.input} />
-      {field.meta.error && field.meta.touched && <span>{field.meta.error}</span>}
-
-    </div>
-
+    <FormGroup  validationState={field.meta.error && field.meta.touched ? 'error' : null}  >
+      <ControlLabel>{field.placeholder}</ControlLabel>
+      <FormControl {...field.input} />
+      {field.meta.error && field.meta.touched && <ControlLabel>{field.meta.error}</ControlLabel>}
+    </FormGroup>
   )
 
 }
@@ -34,9 +35,12 @@ const validate = (values) => {
   return errors;
 
 }
-
+HeroForm.propTypes = {
+  handleBack: React.PropTypes.func.isRequired,
+  action: React.PropTypes.string.isRequired
+}
 export default reduxForm({
   form: 'hero',
   enableReinitialize: true,
   validate
-})(HeroForm);;
+})(HeroForm);

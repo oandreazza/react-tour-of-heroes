@@ -17,6 +17,10 @@ class HeroEdit extends Component {
         this.props.updateHero(values);
     }
 
+    back = () => {
+      this.props.history.push('/heroes');
+    }
+
     render() {
         const {data} = this.props
         let initialValues = {
@@ -24,7 +28,7 @@ class HeroEdit extends Component {
         }
         return (
             <div>
-                <HeroForm {...initialValues} onSubmit={this.submit}/>
+                <HeroForm action="Edit" handleBack={this.back} {...initialValues} onSubmit={this.submit}/>
             </div>
         )
     }
