@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import HeroList from '../components/HeroList'
-import {getHeroes} from '../action/heroes'
+import {getHeroes} from '../action/heroes';
 
 
 const mapStateToProps = (state) =>(
@@ -17,10 +17,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-const HeroesContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(HeroList)
-
-export default HeroesContainer;

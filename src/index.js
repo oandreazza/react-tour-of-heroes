@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import { HashRouter, Route, Switch} from 'react-router-dom';
 import App from './components/App';
 import Home from './components/Home'
-import Heroes from './containers/heroes';
+import HeroList from './containers/HeroList';
 import HeroEdit from './containers/HeroEdit'
 import HeroesStore from './store.js';
 import HeroAdd from './containers/HeroAdd';
@@ -15,7 +15,7 @@ render(
         <App>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/heroes" component={Heroes} />
+            <Route exact path="/heroes" component={HeroList} />
             <Route path="/hero/:id" component={HeroEdit} />
             <Route exact path="/heroes/add" component={HeroAdd} />
           </Switch>
