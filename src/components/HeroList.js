@@ -53,6 +53,10 @@ class HeroList extends React.Component{
                               Edit
                             </button>
                           </Link>
+
+                            <button onClick={() => this.props.deleteHero(hero.id)}>
+                              Delete
+                            </button>
                       </td>
                     </tr>
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import HeroList from '../components/HeroList'
-import {getHeroes} from '../action/heroes';
+import {getHeroes,deleteHeroAndRefresh } from '../action/heroes';
 
 
 const mapStateToProps = (state) =>(
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getHeroes: () => {
       dispatch(getHeroes())
+    },
+    deleteHero: (id) => {
+      dispatch(deleteHeroAndRefresh(id))
     }
   }
 }

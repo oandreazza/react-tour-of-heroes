@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+
 export function getHeroes(){
   return {
     type: "FETCH_HEROES",
@@ -25,5 +26,17 @@ export function saveHero(hero){
   return {
     type: "SAVE_HERO",
     payload: axios.post('http://localhost/api/heroes/save',hero)
+  }
+}
+
+function deteleHero(id){
+  return axios.delete(`http://localhost/api/heroes/${id}`)
+}
+
+export function deleteHeroAndRefresh(id){
+  return function (dispatch){
+    return deteleHero(id).then(() =>{
+      dispatch(getHeroes())
+    })
   }
 }
