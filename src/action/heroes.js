@@ -36,7 +36,8 @@ function deteleHero(id){
 export function deleteHeroAndRefresh(id){
   return function (dispatch){
     return deteleHero(id).then(() =>{
-      dispatch(getHeroes())
+      dispatch(getHeroes());
+      dispatch({type: "SHOW_NOTIFICATION", payload: "Hero Deleted"})
     })
   }
 }

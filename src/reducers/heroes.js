@@ -34,9 +34,25 @@ const heroReducer = (state = initialHeroState, action) => {
   }
 }
 
+let initialNotificationState = {
+  message: ""
+}
+const notificationReducer = (state= initialNotificationState, action) => {
+  switch (action.type) {
+    case "SHOW_NOTIFICATION":
+      let message = action.payload;
+      return {...state, message}
+    case "DISMISS_NOTIFICATION":
+      return state;
+    default:
+      return state;
+  }
+}
+
 const appReducer = combineReducers({
     heroesReducer : heroesReducer,
-    heroReducer : heroReducer
+    heroReducer : heroReducer,
+    notificationReducer: notificationReducer
 });
 
 export default appReducer;
