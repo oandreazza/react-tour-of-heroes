@@ -1,6 +1,14 @@
+import _ from 'lodash';
 import React from 'react';
 import { Field, reduxForm} from 'redux-form';
 import {FormGroup,ControlLabel,FormControl,HelpBlock, Button,ButtonToolbar, Panel} from 'react-bootstrap';
+
+const FIELDS = {
+  name: {
+    label: "Name",
+    type: "input"
+  }
+}
 
 const HeroForm = ({handleSubmit, valid, handleBack, action}) => {
   return (
@@ -31,8 +39,13 @@ let renderForm = (field) => {
 
 const validate = (values) => {
   let errors = {};
-  if(!values.name)
-    errors.name = "Enter name";
+
+  _.each(FIELDS, (type, field) => {
+    let label = type.label;
+    if(!values[field]){
+      errors[field] = `Enter a ${label}`
+    }
+  });
 
   return errors;
 
@@ -44,5 +57,6 @@ HeroForm.propTypes = {
 export default reduxForm({
   form: 'hero',
   enableReinitialize: true,
+  fiedls: FIELDS,
   validate
 })(HeroForm);
