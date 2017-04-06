@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { BrowserHistory } from 'react-router'
 
 
 export function getHeroes(){
@@ -16,28 +15,38 @@ export function getUser(id){
   }
 }
 
-export function updateHero(hero){
-  return {
-    type: "UPDATE_HERO",
-    payload: axios.post(`http://localhost/api/heroes/update`,hero)
+function updateHero(hero){
+  return axios.post(`http://localhost/api/heroes/update`,hero)
+}
+
+export function updateHeroAndNotify(hero){
+  return function (dispatch){
+    return updateHero(hero).then(() => {
+      dispatch(getHeroes());
+      dispatch({type: "SHOW_NOTIFICATION", payload: { message: "Hero Updated", type: "success" } });
+    })
   }
 }
 
-export function saveHero(hero){
-  return {
-    type: "SAVE_HERO",
-    payload: axios.post('http://localhost/api/heroes/save',hero)
+function saveHero(hero){
+  return axios.post('http://localhost/api/heroes/save',hero)
+}
+
+export function saveHeroAndNotify(values){
+  return function (dispatch){
+    return saveHero(values).then(() => {
+      dispatch(getHeroes());
+      dispatch({type: "SHOW_NOTIFICATION", payload: { message: "Hero Added", type: "success" } });
+    })
   }
 }
 
 function deteleHero(id){
   return axios.delete(`http://localhost/api/heroes/${id}`)
 }
-
 export function deleteHeroAndRefresh(id){
   return function (dispatch){
     return deteleHero(id).then(() =>{
-      console.log(BrowserHistory);
       dispatch(getHeroes());
       dispatch({type: "SHOW_NOTIFICATION", payload: { message: "Hero Deleted", type: "warning" } });
       //dispatch(routerActions.push("/heroes/add"));

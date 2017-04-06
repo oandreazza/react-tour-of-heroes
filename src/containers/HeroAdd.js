@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {saveHero} from '../action/heroes';
+import {saveHeroAndNotify} from '../action/heroes';
 import HeroAdd from '../components/HeroAdd';
 
 const mapStateToProps = (state) => (
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => {
   return {
     saveHero: (hero) => {
-      return dispatch(saveHero(hero))
+      return dispatch(saveHeroAndNotify(hero))
     }
   }
 }
