@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, Alert} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -17,9 +17,6 @@ class HeroList extends React.Component{
     const {data,notification} = this.props;
     return(
       <div>
-        {notification.message != "" ?     <Alert bsStyle="danger">
-      {notification.message}
-    </Alert> : null}
         <Link to="/heroes/add">
           <button>
               add

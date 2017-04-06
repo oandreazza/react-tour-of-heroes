@@ -5,8 +5,7 @@ import {getHeroes,deleteHeroAndRefresh } from '../action/heroes';
 
 const mapStateToProps = (state) =>(
   {
-    data: state.appReducer.heroesReducer,
-    notification: state.appReducer.notificationReducer
+    data: state.appReducer.heroesReducer
   }
 )
 

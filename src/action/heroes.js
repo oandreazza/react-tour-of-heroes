@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
+import { BrowserHistory } from 'react-router'
 
 
 export function getHeroes(){
@@ -36,8 +37,10 @@ function deteleHero(id){
 export function deleteHeroAndRefresh(id){
   return function (dispatch){
     return deteleHero(id).then(() =>{
+      console.log(BrowserHistory);
       dispatch(getHeroes());
-      dispatch({type: "SHOW_NOTIFICATION", payload: "Hero Deleted"})
+      dispatch({type: "SHOW_NOTIFICATION", payload: { message: "Hero Deleted", type: "warning" } });
+      //dispatch(routerActions.push("/heroes/add"));
     })
   }
 }

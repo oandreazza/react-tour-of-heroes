@@ -35,13 +35,15 @@ const heroReducer = (state = initialHeroState, action) => {
 }
 
 let initialNotificationState = {
-  message: ""
+  message: "",
+  type: "warning"
 }
 const notificationReducer = (state= initialNotificationState, action) => {
   switch (action.type) {
     case "SHOW_NOTIFICATION":
-      let message = action.payload;
-      return {...state, message}
+      let message = action.payload.message;
+      let type = action.payload.type;
+      return {...state, message, type}
     case "DISMISS_NOTIFICATION":
       return state;
     default:

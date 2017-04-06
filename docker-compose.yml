@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile-react
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-api
+    environment:
+      - DB_HOST=db-mysql
+      - DB_DATABASE=heroes
+      - DB_USERNAME=heroes_app
+      - DB_PASSWORD=123
+    ports:
+      - "80:80"
+    depends_on:
+      - db-mysql
+  db-mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=heroes
+      - MYSQL_USER=heroes_app
+      - MYSQL_PASSWORD=123

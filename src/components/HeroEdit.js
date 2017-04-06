@@ -16,7 +16,7 @@ class HeroEdit extends Component {
     update = (values) => {
         this.props.updateHero(values)
           .then( () => {
-            this.props.location.push('/heroes')
+            this.props.history.push('/heroes')
           });
     }
 
