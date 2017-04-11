@@ -52,14 +52,32 @@ const notificationReducer = (state= initialNotificationState, action) => {
 }
 
 let initialChartState = {
-  dataChart: [0,0,0,0],
+    invisibility:0,
+    freezing:0,
+    fire:0,
+    speed:0,
 }
 const heroChartReducer = (state= initialChartState, action ) => {
   switch (action.type) {
     case "@@redux-form/CHANGE":
-      let value = + action.payload
-      let chartValue = [value,21,32,12]
-      return {...state, dataChart:chartValue}
+      let field = action.meta.field
+      if(field == 'invisibility'){
+        let value = + action.payload;
+        return {...state, invisibility: value}
+      }
+      if(field == 'freezing'){
+        let value = + action.payload;
+        return {...state, freezing: value}
+      }
+      if(field == 'fire'){
+        let value = + action.payload;
+        return {...state, fire: value}
+      }
+      if(field == 'speed'){
+        let value = + action.payload;
+        return {...state, speed: value}
+      }
+      return {...state}
     default:
       return state;
 

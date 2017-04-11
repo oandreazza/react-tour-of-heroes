@@ -34,7 +34,6 @@ const HeroForm = ({handleSubmit, valid, handleBack, action}) => {
             <ControlLabel>Speed</ControlLabel>
             <Field name="speed" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
           </FormGroup>
-
           <FormGroup>
             <HeroChart/>
           </FormGroup>
