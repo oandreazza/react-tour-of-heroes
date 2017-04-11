@@ -9,10 +9,13 @@ import HeroEdit from './containers/HeroEdit'
 import HeroesStore from './store.js';
 import HeroAdd from './containers/HeroAdd';
 import Notification from './containers/Notification';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 render(
   <Provider store={HeroesStore}>
     <Router>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
         <App>
           <Notification/>
           <Switch>
@@ -22,6 +25,7 @@ render(
             <Route exact path="/heroes/add" component={HeroAdd} />
           </Switch>
         </App>
+      </MuiThemeProvider>
     </Router>
   </Provider>
   ,

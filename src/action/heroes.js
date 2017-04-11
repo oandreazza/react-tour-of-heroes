@@ -49,7 +49,6 @@ export function deleteHeroAndRefresh(id){
     return deteleHero(id).then(() =>{
       dispatch(getHeroes());
       dispatch({type: "SHOW_NOTIFICATION", payload: { message: "Hero Deleted", type: "warning" } });
-      //dispatch(routerActions.push("/heroes/add"));
     })
   }
 }

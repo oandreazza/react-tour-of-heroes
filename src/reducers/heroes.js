@@ -51,10 +51,26 @@ const notificationReducer = (state= initialNotificationState, action) => {
   }
 }
 
+let initialChartState = {
+  dataChart: [0,0,0,0],
+}
+const heroChartReducer = (state= initialChartState, action ) => {
+  switch (action.type) {
+    case "@@redux-form/CHANGE":
+      let value = + action.payload
+      let chartValue = [value,21,32,12]
+      return {...state, dataChart:chartValue}
+    default:
+      return state;
+
+  }
+}
+
 const appReducer = combineReducers({
     heroesReducer : heroesReducer,
     heroReducer : heroReducer,
-    notificationReducer: notificationReducer
+    notificationReducer: notificationReducer,
+    heroChartReducer: heroChartReducer
 });
 
 export default appReducer;
