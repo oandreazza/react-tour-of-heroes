@@ -14,26 +14,20 @@ class HeroChart extends Component{
   }
 
   componentWillMount = () => {
-    let arrayDataChart = [];
-    let chartData = this.props.data;
-    arrayDataChart[0] = chartData.invisibility;
-    arrayDataChart[1] = chartData.freezing;
-    arrayDataChart[2] = chartData.fire;
-    arrayDataChart[3] = chartData.speed;
-    this.setState({
-      dataChart: arrayDataChart
-    })
+    this.applyDataChart(this.props.data)
   }
 
   componentWillReceiveProps = (nextProps) => {
-    let arrayDataChart = [];
-    let chartData = nextProps.data;
-    arrayDataChart[0] = chartData.invisibility;
-    arrayDataChart[1] = chartData.freezing;
-    arrayDataChart[2] = chartData.fire;
-    arrayDataChart[3] = chartData.speed;
+    this.applyDataChart(nextProps.data)
+  }
+
+  applyDataChart = ( chartData ) => {
+    const result = Object.keys(chartData).map(function(data){
+      return [chartData[data]]
+    })
+
     this.setState({
-      dataChart: arrayDataChart
+      dataChart: result.slice(0,4)
     })
   }
 

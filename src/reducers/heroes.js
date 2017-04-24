@@ -60,24 +60,7 @@ let initialChartState = {
 const heroChartReducer = (state= initialChartState, action ) => {
   switch (action.type) {
     case "@@redux-form/CHANGE":
-      let field = action.meta.field
-      if(field == 'invisibility'){
-        let value = + action.payload;
-        return {...state, invisibility: value}
-      }
-      if(field == 'freezing'){
-        let value = + action.payload;
-        return {...state, freezing: value}
-      }
-      if(field == 'fire'){
-        let value = + action.payload;
-        return {...state, fire: value}
-      }
-      if(field == 'speed'){
-        let value = + action.payload;
-        return {...state, speed: value}
-      }
-      return {...state}
+      return {...state, [action.meta.field]:action.payload}
     default:
       return state;
 

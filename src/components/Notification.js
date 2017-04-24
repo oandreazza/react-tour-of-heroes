@@ -26,18 +26,18 @@ class Notification extends Component{
     })
   }
 
-  render() {
+  renderNotification = () => {
+    const {renderNotification} = this.state.renderNotification;
     const {notification} = this.props;
 
+    if(renderNotification)
+      return  <Alert bsStyle={notification.type} onDismiss={this.dismiss}>{notification.message}</Alert>;
+  }
+
+  render() {
       return(
         <div>
-          {this.state.renderNotification?
-            <Alert bsStyle={notification.type} onDismiss={this.dismiss}>
-              {notification.message}
-            </Alert>
-            :
-            null
-          }
+          {this.renderNotification()}
         </div>
       )
   }
