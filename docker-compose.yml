@@ -10,9 +10,7 @@ services:
     depends_on:
       - api
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile-api
+    image: mauricioweb/tour-heroes-api
     environment:
       - DB_HOST=db-mysql
       - DB_DATABASE=heroes
