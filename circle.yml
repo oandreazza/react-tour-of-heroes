@@ -1,0 +1,16 @@
+dependencies:
+  override:
+    - npm install -g firebase-tools
+    - npm install -g create-react-app
+    - npm install
+
+test:
+  override:
+    - ls
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - npm run build
+      - firebase deploy --token=$FIREBASE_TOKEN --non-interactive
