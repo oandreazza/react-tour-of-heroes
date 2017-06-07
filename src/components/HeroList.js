@@ -6,7 +6,6 @@ import HeroTable from './HeroTable';
 class HeroList extends React.Component{
   constructor(props) {
     super(props);
-    this.componentWillMount = this.componentWillMount.bind(this);
   }
 
   componentWillMount(){
@@ -14,7 +13,7 @@ class HeroList extends React.Component{
   }
 
   render() {
-    const {heroes, deleteHero} = this.props;    
+    const {heroes, deleteHero} = this.props;
     return(
       <div>
         <Link to="/heroes/add">

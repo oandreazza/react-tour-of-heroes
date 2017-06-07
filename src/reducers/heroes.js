@@ -62,26 +62,8 @@ const notificationReducer = (state= initialNotificationState, action) => {
   }
 }
 
-let initialChartState = {
-    invisibility:0,
-    freezing:0,
-    fire:0,
-    speed:0,
-}
-const heroChartReducer = (state= initialChartState, action ) => {
-  switch (action.type) {
-
-    default:
-      return state;
-
-  }
-}
-
-const appReducer = combineReducers({
+export default combineReducers({
     heroesReducer : heroesReducer,
     heroReducer : heroReducer,
     notificationReducer: notificationReducer,
-    heroChartReducer: heroChartReducer
 });
-
-export default appReducer;
