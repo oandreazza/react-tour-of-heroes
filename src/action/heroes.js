@@ -1,4 +1,3 @@
-import axios from 'axios';
 import firebase from 'firebase';
 
 export const getHeroes = () => async(dispatch) => {

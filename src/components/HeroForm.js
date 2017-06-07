@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import { Field, reduxForm} from 'redux-form';
-import {FormGroup,ControlLabel,FormControl,HelpBlock, Button,ButtonToolbar, Panel} from 'react-bootstrap';
+import {FormGroup,ControlLabel,FormControl, Button,ButtonToolbar, Panel} from 'react-bootstrap';
 import { Slider } from 'redux-form-material-ui';
 import HeroChart from '../containers/HeroChart';
 
@@ -12,6 +12,16 @@ const FIELDS = {
   }
 }
 
+let renderForm = (field) => {
+  return (
+    <FormGroup  validationState={field.meta.error && field.meta.touched ? 'error' : null}  >
+      <ControlLabel>{field.mandatory && <span>*</span>} {field.placeholder}</ControlLabel>
+      <FormControl {...field.input} />
+      {field.meta.error && field.meta.touched && <ControlLabel>{field.meta.error}</ControlLabel>}
+    </FormGroup>
+  )
+
+}
 const HeroForm = ({handleSubmit, valid, handleBack, action}) => {
   return (
     <div>
@@ -45,17 +55,6 @@ const HeroForm = ({handleSubmit, valid, handleBack, action}) => {
       </Panel>
     </div>
   )
-}
-
-let renderForm = (field) => {
-  return (
-    <FormGroup  validationState={field.meta.error && field.meta.touched ? 'error' : null}  >
-      <ControlLabel>{field.mandatory && <span>*</span>} {field.placeholder}</ControlLabel>
-      <FormControl {...field.input} />
-      {field.meta.error && field.meta.touched && <ControlLabel>{field.meta.error}</ControlLabel>}
-    </FormGroup>
-  )
-
 }
 
 const validate = (values) => {

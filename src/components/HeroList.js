@@ -4,11 +4,7 @@ import HeroTable from './HeroTable';
 
 
 class HeroList extends React.Component{
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillMount(){
+  componentWillMount = () => {
     this.props.getHeroes();
   }
 

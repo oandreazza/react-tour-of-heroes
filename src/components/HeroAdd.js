@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import HeroForm from './HeroForm';
-import {BrowserHistory} from 'react-router-dom';
 
 
 class HeroAdd extends Component{
-  constructor(props) {
-    super(props);
-  }
 
   componentWillMount = () => {
     this.props.newHero()
