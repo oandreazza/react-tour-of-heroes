@@ -11,7 +11,10 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => {
   return {
     saveHero: (hero) => {
-      return dispatch(saveHeroAndNotify(hero))
+       dispatch(saveHeroAndNotify(hero))
+    },
+    newHero: () => {
+      dispatch({ type: "NEW_HERO", payload:null})
     }
   }
 }

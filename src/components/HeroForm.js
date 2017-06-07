@@ -20,19 +20,19 @@ const HeroForm = ({handleSubmit, valid, handleBack, action}) => {
           <Field component={renderForm} mandatory={true} type="text" name="name" placeholder="Name"/>
           <FormGroup>
             <ControlLabel>Invisibility</ControlLabel>
-            <Field name="invisibility" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
+            <Field name="skills.invisibility" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
           </FormGroup>
           <FormGroup>
             <ControlLabel>Freezing</ControlLabel>
-            <Field name="freezing" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
+            <Field name="skills.freezing" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
           </FormGroup>
           <FormGroup>
             <ControlLabel>Fire</ControlLabel>
-            <Field name="fire" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
+            <Field name="skills.fire" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
           </FormGroup>
           <FormGroup>
             <ControlLabel>Speed</ControlLabel>
-            <Field name="speed" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
+            <Field name="skills.speed" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
           </FormGroup>
           <FormGroup>
             <HeroChart/>

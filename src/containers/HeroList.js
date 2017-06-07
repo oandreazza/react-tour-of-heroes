@@ -1,13 +1,20 @@
 import { connect } from 'react-redux';
 import HeroList from '../components/HeroList'
 import {getHeroes,deleteHeroAndRefresh } from '../action/heroes';
+import _ from 'lodash'
 
 
-const mapStateToProps = (state) =>(
-  {
-    data: state.appReducer.heroesReducer
+const mapStateToProps = (state) =>{
+  const {heroes} = state.appReducer.heroesReducer
+  const heroesMap = _.map(heroes, (data,id) => {
+    return {id, ...data}
+  })
+  console.log(heroesMap);
+  return{
+      heroes: heroesMap
   }
-)
+
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {

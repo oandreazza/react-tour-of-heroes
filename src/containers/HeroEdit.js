@@ -5,7 +5,7 @@ import HeroEdit from '../components/HeroEdit'
 
 const mapStateToProps = (state) => (
     {
-      data: state.appReducer.heroReducer
+      hero: state.appReducer.heroReducer.hero
     }
 )
 
@@ -14,8 +14,8 @@ const mapDispatchToProps = (dispatch) => {
     getUser: (id) => {
       dispatch(getUser(id))
     },
-    updateHero: (hero) => {
-      return dispatch(updateHeroAndNotify(hero))
+    updateHero: (hero,id) => {
+       dispatch(updateHeroAndNotify(hero,id))
     }
   }
 }

@@ -14,8 +14,9 @@ class HeroEdit extends Component {
     }
 
     update = (values) => {
-        this.props.updateHero(values)
-        this.props.history.push('/heroes')
+      const {id} = this.props.match.params;
+      this.props.updateHero(values,id);
+      this.props.history.push('/heroes');
     }
 
     back = () => {
@@ -23,9 +24,9 @@ class HeroEdit extends Component {
     }
 
     render() {
-        const {data} = this.props
+        const {hero} = this.props
         let initialValues = {
-            initialValues: data.hero
+            initialValues: hero
         }
         return (
             <div>

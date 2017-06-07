@@ -2,15 +2,12 @@ import React, {Component} from 'react';
 import {Radar} from 'react-chartjs';
 
 
-
 class HeroChart extends Component{
   constructor(props) {
     super(props);
     this.state = {
       dataChart: [0,0,0,0]
     }
-    this.componentWillMount = this.componentWillMount.bind(this);
-    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
 
   componentWillMount = () => {
@@ -33,7 +30,7 @@ class HeroChart extends Component{
 
   render() {
     const  charData = {
-      labels: ['Invisibility','Freezing', 'Fire', 'Speed'],
+      labels: ['Fire', 'Freezing', 'Invisibility','Speed'],
       datasets: [
         {
           data: this.state.dataChart,

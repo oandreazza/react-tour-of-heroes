@@ -6,8 +6,10 @@ import {BrowserHistory} from 'react-router-dom';
 class HeroAdd extends Component{
   constructor(props) {
     super(props);
-    this.save = this.save.bind(this);
-    this.back = this.back.bind(this);
+  }
+
+  componentWillMount = () => {
+    this.props.newHero()
   }
 
   save = (values) => {

@@ -9,7 +9,7 @@ const heroesReducer = (state = initialHeroesState, action) => {
     case "FETCH_HEROES_PENDING":
       return {...state}
     case "FETCH_HEROES_FULFILLED":
-      let heroes = action.payload.data.data;
+      let heroes = action.payload;
       return {...state,heroes}
     default:
       return state;
@@ -18,7 +18,13 @@ const heroesReducer = (state = initialHeroesState, action) => {
 
 let initialHeroState = {
   hero: {
-    name: ""
+    name: "",
+    skills:{
+      fire: 0,
+      freezing: 0,
+      invisibility: 0,
+      speed: 0
+    }
   }
 }
 
@@ -27,8 +33,13 @@ const heroReducer = (state = initialHeroState, action) => {
     case "FETCH_HERO":
       return {...state}
     case "FETCH_HERO_FULFILLED":
-      let hero = action.payload.data.data;
+      let hero = action.payload;
       return {...state,hero}
+    case "@@redux-form/CHANGE":
+      const field = action.meta.field.split('.').pop()
+      return {hero:{name: state.hero.name,skills:{ ...state.hero.skills,[field]: action.payload}}}
+    case "NEW_HERO":
+      return {...initialHeroState}
     default:
       return state;
   }
@@ -59,8 +70,7 @@ let initialChartState = {
 }
 const heroChartReducer = (state= initialChartState, action ) => {
   switch (action.type) {
-    case "@@redux-form/CHANGE":
-      return {...state, [action.meta.field]:action.payload}
+
     default:
       return state;
 

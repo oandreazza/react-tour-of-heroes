@@ -14,7 +14,7 @@ class HeroList extends React.Component{
   }
 
   render() {
-    const {data,notification, deleteHero} = this.props;
+    const {heroes, deleteHero} = this.props;    
     return(
       <div>
         <Link to="/heroes/add">
@@ -25,7 +25,7 @@ class HeroList extends React.Component{
         <h1>
           Hero List
         </h1>
-        <HeroTable heroes={data.heroes} deleteFunction={deleteHero}/>
+        <HeroTable heroes={heroes} deleteFunction={deleteHero}/>
       </div>
     )
   }

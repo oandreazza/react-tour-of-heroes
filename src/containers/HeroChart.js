@@ -3,7 +3,7 @@ import HeroChart from '../components/HeroChart';
 
 const mapStateToProps = (state) => (
     {
-      data: state.appReducer.heroChartReducer
+      data: state.appReducer.heroReducer.hero.skills
     }
 )
 
