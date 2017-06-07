@@ -47,7 +47,7 @@ const heroReducer = (state = initialHeroState, action) => {
 
 let initialNotificationState = {
   message: "",
-  type: "warning"
+  type: "warning",
 }
 const notificationReducer = (state= initialNotificationState, action) => {
   switch (action.type) {
