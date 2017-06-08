@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HeroTable from './HeroTable';
+import { Grid, Row, Col} from 'react-bootstrap'
+import HeroCard from './HeroCard'
 
 
 class HeroList extends React.Component{
@@ -20,7 +21,19 @@ class HeroList extends React.Component{
         <h1>
           Hero List
         </h1>
-        <HeroTable heroes={heroes} deleteFunction={deleteHero}/>
+        <Grid>
+          <Row>
+            {
+              heroes.map( hero => {
+                return(
+                  <Col md={4} style={{marginTop:50}}>
+                    <HeroCard hero={hero} deleteHandle={deleteHero} />
+                  </Col>
+                )
+              })
+            }
+          </Row>
+        </Grid>
       </div>
     )
   }

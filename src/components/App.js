@@ -24,7 +24,7 @@ class App extends Component {
           <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="#">Tour of Heroes Continous Deploy Test</a>
+                <a href="#">Tour of Heroes</a>
               </Navbar.Brand>
             </Navbar.Header>
             <Nav>
