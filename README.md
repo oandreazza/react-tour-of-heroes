@@ -1,4 +1,5 @@
 ![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg?maxAge=2592000)
+(https://circleci.com/gh/:owner/:repo.svg?style=shield&circle-token=08730f378fa7bbaa6a1f97fe8bac1ac90eec379b)
 # React with Lumen API and Mysql Db orchestrated by Docker
 
 
@@ -8,12 +9,7 @@
 ```sh
 $ docker-compose up -d
 ```
-### 2. After all containers up
-```sh
-$ docker-compose exec api php artisan migrate
-```
-
-### 3. Open your browser
+### 2. Open your browser
 ```
 http://localhost:3000/
 ```
@@ -21,5 +17,5 @@ http://localhost:3000/
 
 ##### Reference:
  - [React](https://facebook.github.io/react/) - React Lib
- - [Lumen Laravel](https://lumen.laravel.com/docs/5.3) - PHP micro-framework
+ - [Firebase](https://firebase.google.com/) - Firebase Realtime Database
  - [Docker](https://docs.docker.com/) - Containerization platform
