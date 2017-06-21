@@ -6,7 +6,7 @@ export const getHeroes = () => async(dispatch) => {
   })
 }
 
-export const getUser = (id) => async(dispatch) => {
+export const getHero = (id) => async(dispatch) => {
   const hero = await firebase.database().ref(`/heroes/${id}`).once('value')
   dispatch({ type: 'FETCH_HERO_FULFILLED', payload: hero.val()})
 }

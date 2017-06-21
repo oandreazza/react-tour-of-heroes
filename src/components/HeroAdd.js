@@ -5,7 +5,7 @@ import HeroForm from './HeroForm';
 class HeroAdd extends Component{
 
   componentWillMount = () => {
-    this.props.newHero()
+    //this.props.newHero()
   }
 
   save = (values) => {
@@ -22,10 +22,13 @@ class HeroAdd extends Component{
   }
 
   render() {
-
+    const {address} = this.props.geo
+    let initialValues = {
+        initialValues: address
+    }
     return(
       <div>
-        <HeroForm action="Add" handleBack={this.back} handleLocation={this.getAddress} onSubmit={this.save} />
+        <HeroForm action="Add" {...initialValues} handleBack={this.back} handleLocation={this.getAddress} onSubmit={this.save} />
       </div>
     )
   }

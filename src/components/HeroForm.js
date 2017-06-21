@@ -17,7 +17,7 @@ let renderForm = (field) => {
     <FormGroup  validationState={field.meta.error && field.meta.touched ? 'error' : null}  >
       <Col md={field.colSize ? field.colSize : 4}>
         <ControlLabel>{field.mandatory && <span>*</span>} {field.label}</ControlLabel>
-        <FormControl {...field}   />
+        <FormControl {...field.input}   />
         {field.meta.error && field.meta.touched && <ControlLabel>{field.meta.error}</ControlLabel>}
       </Col>
     </FormGroup>
@@ -27,12 +27,11 @@ let renderForm = (field) => {
 const HeroForm = ({handleSubmit, valid, handleBack, action, handleLocation}) => {
   return (
     <div>
-        <Form horizontal>
-          <form onSubmit={handleSubmit}>
+        <Form horizontal  onSubmit={handleSubmit}>
             <Panel header="Personal Information" bsStyle="primary">
               <Field component={renderForm} mandatory={true} type="text" name="name" label="Name" placeholder="Name"/>
-              <Field component={renderForm}  type="text" colSize={8} name="address" label="Address" placeholder="Type your address..."/>
-          
+              <Field component={renderForm}  type="text" colSize={8} name="formatted_address" label="Address" placeholder="Type your address..."/>
+              <Button onClick={handleLocation}>Find</Button>
             </Panel>
             <Panel header="Power" bsStyle="primary">
               <FormGroup>
@@ -64,9 +63,7 @@ const HeroForm = ({handleSubmit, valid, handleBack, action, handleLocation}) => 
                 <Button type="submit" bsStyle="primary" >Save</Button>
               </ButtonToolbar>
             </Panel>
-          </form>
-        </Form>
-
+          </Form>
     </div>
   )
 }

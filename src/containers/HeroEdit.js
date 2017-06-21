@@ -1,4 +1,4 @@
-import {getUser,updateHeroAndNotify} from '../action/heroes';
+import {getHero,updateHeroAndNotify} from '../action/heroes';
 import { connect } from 'react-redux';
 import HeroEdit from '../components/HeroEdit'
 
@@ -11,8 +11,8 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUser: (id) => {
-      dispatch(getUser(id))
+    getHero: (id) => {
+      dispatch(getHero(id))
     },
     updateHero: (hero,id) => {
        dispatch(updateHeroAndNotify(hero,id))

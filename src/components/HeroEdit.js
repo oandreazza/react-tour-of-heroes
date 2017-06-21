@@ -2,15 +2,10 @@ import React, {Component} from 'react';
 import HeroForm from './HeroForm';
 
 class HeroEdit extends Component {
-    constructor(props) {
-        super(props);
-        this.componentWillMount = this.componentWillMount.bind(this);
-        this.update = this.update.bind(this);
-    }
 
     componentWillMount() {
-        let param = this.props.match.params.id;
-        this.props.getUser(param);
+      let param = this.props.match.params.id;
+      this.props.getHero(param);
     }
 
     update = (values) => {
@@ -28,10 +23,9 @@ class HeroEdit extends Component {
         let initialValues = {
             initialValues: hero
         }
+
         return (
-            <div>
-                <HeroForm action="Edit" handleBack={this.back} {...initialValues} onSubmit={this.update}/>
-            </div>
+          <HeroForm action="Edit" handleBack={this.back} {...initialValues} onSubmit={this.update}/>
         )
     }
 }
