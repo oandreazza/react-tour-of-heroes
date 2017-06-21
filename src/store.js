@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form'
 import {createLogger} from 'redux-logger';
 import promise from 'redux-promise-middleware';
-import appReducer from './reducers/heroes';
+import appReducer from './reducers';
 import thunk from 'redux-thunk';
 import {browserHistory} from 'react-router-dom'
 import {routerMiddleware} from 'react-router-redux'

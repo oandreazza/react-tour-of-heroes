@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Row, Col} from 'react-bootstrap'
 import HeroCard from './HeroCard'
-
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 class HeroList extends React.Component{
   componentWillMount = () => {
@@ -14,9 +15,9 @@ class HeroList extends React.Component{
     return(
       <div>
         <Link to="/heroes/add">
-          <button>
-              add
-          </button>
+        <FloatingActionButton mini={true} >
+      <ContentAdd />
+    </FloatingActionButton>
         </Link>
         <h1>
           Hero List

@@ -1,10 +1,12 @@
 import {connect} from 'react-redux';
 import {saveHeroAndNotify} from '../action/heroes';
+import {getAddress} from '../action/geolocation'
 import HeroAdd from '../components/HeroAdd';
 
 const mapStateToProps = (state) => (
     {
-      data: state.appReducer.heroReducer
+      data: state.appReducer.heroReducer,
+      geo: state.appReducer.geolocationReducer
     }
 )
 
@@ -15,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     newHero: () => {
       dispatch({ type: "NEW_HERO", payload:null})
+    },
+    loadAddress: (address) => {
+      dispatch(getAddress(address))
     }
   }
 }

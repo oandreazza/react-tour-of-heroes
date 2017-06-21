@@ -17,10 +17,15 @@ class HeroAdd extends Component{
     this.props.history.push('/heroes');
   }
 
+  getAddress = () => {
+    this.props.loadAddress('Porto Alegre')
+  }
+
   render() {
+
     return(
       <div>
-        <HeroForm action="Add" handleBack={this.back} onSubmit={this.save} />
+        <HeroForm action="Add" handleBack={this.back} handleLocation={this.getAddress} onSubmit={this.save} />
       </div>
     )
   }
