@@ -1,6 +1,7 @@
 let initialState = {
   hero: {
     name: "",
+    formatted_address: null,
     skills:{
       fire: 0,
       freezing: 0,
