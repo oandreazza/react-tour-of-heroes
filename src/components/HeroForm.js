@@ -3,6 +3,7 @@ import React from 'react';
 import { Field, reduxForm} from 'redux-form';
 import {FormGroup,Form, ControlLabel,FormControl, Button,ButtonToolbar, Panel, Col} from 'react-bootstrap';
 import TextField from 'material-ui/TextField';
+import {Card, CardText, CardHeader} from 'material-ui/Card'
 import { Slider } from 'redux-form-material-ui';
 import HeroChart from '../containers/HeroChart';
 
@@ -24,8 +25,6 @@ let renderForm = (field) => {
              errorText={field.meta.error && field.meta.touched && field.meta.error}
              {...field.input}
            />
-
-
       </Col>
     </FormGroup>
   )
@@ -34,12 +33,21 @@ let renderForm = (field) => {
 const HeroForm = ({handleSubmit, valid, handleBack, action, handleLocation}) => {
   return (
     <div>
-        <Form horizontal  onSubmit={handleSubmit}>
-            <Panel header="Personal Information" bsStyle="primary">
-              <Field component={renderForm} mandatory={true} type="text" name="name" label="Name" placeholder="Name"/>
+        <Card
+          style={{marginTop:30,marginBottom:20}}
+        >
+          <CardText>
+            <CardHeader
+              title="Personal Info"
+              titleStyle={{fontSize:25}}
+            />
+            <Form horizontal  onSubmit={handleSubmit}>
+              <Field component={renderForm} mandatory={true} type="text" name="name" label="Name" placeholder="Type your name..."/>
               <Field component={renderForm} onBlur={ (value) => handleLocation(value)} type="text" colSize={8} name="formatted_address" label="Address" placeholder="Type your address..."/>
-            </Panel>
-            <Panel header="Power" bsStyle="primary">
+              <CardHeader
+                title="Power"
+                titleStyle={{fontSize:25}}
+              />
               <FormGroup>
                 <Col md={6}>
                   <ControlLabel>Invisibility</ControlLabel>
@@ -50,7 +58,6 @@ const HeroForm = ({handleSubmit, valid, handleBack, action, handleLocation}) => 
                   <Field name="skills.freezing" component={Slider} defaultValue={0} format={(value, name) => value === '' ? 0 : value} min={0} max={50} step={1}/>
                 </Col>
               </FormGroup>
-
               <FormGroup>
                 <Col md={6}>
                   <ControlLabel>Fire</ControlLabel>
@@ -68,8 +75,9 @@ const HeroForm = ({handleSubmit, valid, handleBack, action, handleLocation}) => 
                 <Button onClick={handleBack}>Cancel</Button>
                 <Button type="submit" bsStyle="primary" >Save</Button>
               </ButtonToolbar>
-            </Panel>
           </Form>
+          </CardText>
+          </Card>
     </div>
   )
 }

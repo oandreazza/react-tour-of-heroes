@@ -23,9 +23,9 @@ class App extends Component {
     return (
         <div>
           <AppBar
-  title="Tour of Heroes"
-  iconClassNameRight="muidocs-icon-navigation-expand-more"
-/>
+            title="Tour of Heroes"
+            iconClassNameRight="muidocs-icon-navigation-expand-more"
+          />
           <div className="container">
               {this.props.children}
           </div>
