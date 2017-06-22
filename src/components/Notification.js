@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Alert} from 'react-bootstrap';
+import Snackbar from 'material-ui/Snackbar';
 
 class Notification extends Component{
 
@@ -8,27 +8,19 @@ class Notification extends Component{
   }
 
   componentWillReceiveProps = (nextProps) => {
-    console.log("props", nextProps);
       this.setState({
         renderNotification: true
       })
-      const _this = this;
-      setTimeout(function(){
-        _this.dismiss();
-      },5000)
-  }
-
-  dismiss = () => {
-    this.setState({
-      renderNotification: false
-    })
   }
 
   renderNotification = () => {
     const {renderNotification} = this.state;
     const {notification} = this.props;
-    if(renderNotification)
-      return  <Alert bsStyle={notification.type} onDismiss={this.dismiss}>{notification.message}</Alert>;
+      return <Snackbar
+          open={renderNotification}
+          message={notification.message}
+          autoHideDuration={5000}
+        />
   }
 
   render() {

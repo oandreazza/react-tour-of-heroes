@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap'
 import {Link} from 'react-router-dom';
 import firebase from 'firebase'
+import AppBar from 'material-ui/AppBar';
 
 class App extends Component {
 
@@ -21,26 +22,10 @@ class App extends Component {
   render(){
     return (
         <div>
-          <Navbar>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <a href="#">Tour of Heroes</a>
-              </Navbar.Brand>
-            </Navbar.Header>
-            <Nav>
-                <NavItem>
-                    <Link to="/">
-                      Home
-                    </Link>
-                </NavItem>
-
-                <NavItem>
-                    <Link to="/heroes">
-                      Heroes
-                    </Link>
-                </NavItem>
-            </Nav>
-          </Navbar>
+          <AppBar
+  title="Tour of Heroes"
+  iconClassNameRight="muidocs-icon-navigation-expand-more"
+/>
           <div className="container">
               {this.props.children}
           </div>

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { Field, reduxForm} from 'redux-form';
 import {FormGroup,Form, ControlLabel,FormControl, Button,ButtonToolbar, Panel, Col} from 'react-bootstrap';
+import TextField from 'material-ui/TextField';
 import { Slider } from 'redux-form-material-ui';
 import HeroChart from '../containers/HeroChart';
 
@@ -16,9 +17,15 @@ let renderForm = (field) => {
   return (
     <FormGroup  validationState={field.meta.error && field.meta.touched ? 'error' : null}  >
       <Col md={field.colSize ? field.colSize : 4}>
-        <ControlLabel>{field.mandatory && <span>*</span>} {field.label}</ControlLabel>
-        <FormControl {...field.input} {...field.placeholder}  />
-        {field.meta.error && field.meta.touched && <ControlLabel>{field.meta.error}</ControlLabel>}
+        <TextField
+             hintText={field.placeholder}
+             floatingLabelText={field.label}
+             fullWidth={true}
+             errorText={field.meta.error && field.meta.touched && field.meta.error}
+             {...field.input}
+           />
+
+
       </Col>
     </FormGroup>
   )
@@ -30,7 +37,7 @@ const HeroForm = ({handleSubmit, valid, handleBack, action, handleLocation}) => 
         <Form horizontal  onSubmit={handleSubmit}>
             <Panel header="Personal Information" bsStyle="primary">
               <Field component={renderForm} mandatory={true} type="text" name="name" label="Name" placeholder="Name"/>
-              <Field component={renderForm}  type="text" colSize={8} name="formatted_address" label="Address" placeholder="Type your address..."/>
+              <Field component={renderForm} onBlur={ (value) => handleLocation(value)} type="text" colSize={8} name="formatted_address" label="Address" placeholder="Type your address..."/>
             </Panel>
             <Panel header="Power" bsStyle="primary">
               <FormGroup>

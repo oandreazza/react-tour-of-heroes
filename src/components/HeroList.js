@@ -15,9 +15,9 @@ class HeroList extends React.Component{
     return(
       <div>
         <Link to="/heroes/add">
-        <FloatingActionButton mini={true} >
-      <ContentAdd />
-    </FloatingActionButton>
+          <FloatingActionButton mini={true} >
+            <ContentAdd />
+          </FloatingActionButton>
         </Link>
         <h1>
           Hero List

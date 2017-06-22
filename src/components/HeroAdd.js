@@ -5,7 +5,7 @@ import HeroForm from './HeroForm';
 class HeroAdd extends Component{
 
   componentWillMount = () => {
-    //this.props.newHero()
+    this.props.newHero()
   }
 
   save = (values) => {
@@ -17,8 +17,9 @@ class HeroAdd extends Component{
     this.props.history.push('/heroes');
   }
 
-  getAddress = () => {
-    this.props.loadAddress('Porto Alegre')
+  getAddress = (el) => {
+    const {target:{value}} = el;
+    this.props.loadAddress(value)
   }
 
   render() {
