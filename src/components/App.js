@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap'
 import {Link} from 'react-router-dom';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 import firebase from 'firebase'
 import AppBar from 'material-ui/AppBar';
 
@@ -25,6 +27,7 @@ class App extends Component {
           <AppBar
             title="Tour of Heroes"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
+             onLeftIconButtonTouchTap={(event) => alert(event)}
           />
           <div className="container">
               {this.props.children}

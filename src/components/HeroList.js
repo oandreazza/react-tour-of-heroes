@@ -29,7 +29,7 @@ class HeroList extends React.Component{
             {
               heroes.map( hero => {
                 return(
-                  <Col md={4} style={{marginTop:50}}>
+                  <Col md={4} xs={12} sm={6} style={{marginTop:50}}>
                     <HeroCard hero={hero} deleteHandle={deleteHero} />
                   </Col>
                 )
