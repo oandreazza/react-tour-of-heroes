@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import firebase from 'firebase'
-import AppBar from 'material-ui/AppBar';
+import Header from '../containers/Header'
 
 class App extends Component {
 
   componentWillMount = () => {
-
     const config = {
       apiKey: "AIzaSyDVxkGi3VdfuxHxXbNMjqW3M9fPrASmSZY",
       authDomain: "tour-of-heroes-reactjs.firebaseapp.com",
@@ -21,13 +19,9 @@ class App extends Component {
   render(){
     return (
         <div>
-          <AppBar
-            title={<Link to="/heroes">Tour of Heroes</Link>}
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-            onLeftIconButtonTouchTap={(event) => alert(event)}
-          />
+          <Header/>
           <div className="container">
-              {this.props.children}
+            {this.props.children}
           </div>
         </div>
       )

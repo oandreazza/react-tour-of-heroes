@@ -29,16 +29,13 @@ class HeroList extends React.Component{
             <ContentAdd />
           </FloatingActionButton>
         </Link>
-        <h1>
-          Hero List
-        </h1>
         <Grid>
           <Row>
             {
               heroes.map( hero => {
                 return(
                   <Col md={4} xs={12} sm={6} style={{marginTop:50}}>
-                    <HeroCard hero={hero} deleteHandle={deleteHero} />
+                    <HeroCard key={hero.id} hero={hero} deleteHandle={deleteHero} />
                   </Col>
                 )
               })
