@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import { Field, reduxForm} from 'redux-form';
-import {FormGroup,Form, ControlLabel,FormControl, Button,ButtonToolbar, Panel, Col} from 'react-bootstrap';
+import {Form, ControlLabel,FormGroup, Button,ButtonToolbar, Col} from 'react-bootstrap';
 import TextField from 'material-ui/TextField';
 import {Card, CardText, CardHeader} from 'material-ui/Card'
 import { Slider } from 'redux-form-material-ui';

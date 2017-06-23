@@ -5,6 +5,14 @@ import HeroCard from './HeroCard'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
+const styles = {
+  buttonAction: {
+    position:'absolute',
+    bottom:50,
+    right:50
+  }
+}
+
 class HeroList extends React.Component{
 
   componentWillMount = () => {
@@ -39,14 +47,6 @@ class HeroList extends React.Component{
         </Grid>
       </div>
     )
-  }
-}
-
-const styles = {
-  buttonAction: {
-    position:'absolute',
-    bottom:50,
-    right:50
   }
 }
 export default HeroList
