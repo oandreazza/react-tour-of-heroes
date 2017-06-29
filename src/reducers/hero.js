@@ -18,11 +18,10 @@ export default (state = initialState, action) => {
     case "FETCH_HERO_FULFILLED":
       let hero = action.payload;
       return {...state,hero}
-    case "@@redux-form/CHANGE":
-      const field = action.meta.field.split('.').pop()
-      return {hero:{name: state.hero.name,skills:{ ...state.hero.skills,[field]: action.payload}}}
-    case "NEW_HERO":
-      return {...initialState}
+    // case "@@redux-form/CHANGE":
+    //   const field = action.meta.field.split('.').pop()
+    //   const hero2 = {...state.hero,skills:{...state.hero.skills,[field]: 2}}
+    //   return {...state,hero2}
     default:
       return state;
   }

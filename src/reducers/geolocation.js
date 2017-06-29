@@ -1,5 +1,7 @@
 let initialState = {
-  address: null
+  address: {
+    formatted_address: null
+  }
 }
 
 export default (state= initialState, action) =>{

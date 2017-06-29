@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import HeroCard from './HeroCard'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -14,7 +14,7 @@ const styles = {
   }
 }
 
-class HeroList extends React.Component{
+class HeroList extends Component{
 
   state = {
     modal: false,

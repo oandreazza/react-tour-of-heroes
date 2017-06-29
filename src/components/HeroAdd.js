@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
-import HeroForm from './HeroForm';
+import HeroForm from '../containers/HeroForm';
 
-
-class HeroAdd extends Component{
-
-  componentWillMount = () => {
-    this.props.newHero()
+const DEFAULT_HERO = {
+  name: "",
+  formatted_address: null,
+  skills:{
+    fire: 0,
+    freezing: 0,
+    invisibility: 0,
+    speed: 0
   }
+}
+class HeroAdd extends Component{
 
   save = (values) => {
     this.props.saveHero(values);
@@ -17,19 +22,14 @@ class HeroAdd extends Component{
     this.props.history.push('/heroes');
   }
 
-  getAddress = (el) => {
-    const {target:{value}} = el;
-    this.props.loadAddress(value)
-  }
 
   render() {
-    const {address} = this.props.geo
     let initialValues = {
-        initialValues: address
+        initialValues: DEFAULT_HERO
     }
     return(
       <div>
-        <HeroForm action="Add" {...initialValues} handleBack={this.back} handleLocation={this.getAddress} onSubmit={this.save} />
+        <HeroForm action="Add" {...initialValues} handleBack={this.back} onSubmit={this.save} />
       </div>
     )
   }

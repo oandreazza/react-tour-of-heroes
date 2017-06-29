@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import HeroForm from './HeroForm';
+import HeroForm from '../containers/HeroForm';
 
 class HeroEdit extends Component {
 
-    componentWillMount() {
+    componentWillMount = () => {
       let param = this.props.match.params.id;
       this.props.getHero(param);
     }
