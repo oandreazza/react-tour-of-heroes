@@ -4,6 +4,10 @@ import Header from '../containers/Header'
 
 class App extends Component {
 
+  state = {
+    open: false
+  }
+
   componentWillMount = () => {
     const config = {
       apiKey: "AIzaSyDVxkGi3VdfuxHxXbNMjqW3M9fPrASmSZY",
@@ -19,7 +23,7 @@ class App extends Component {
   render(){
     return (
         <div>
-          <Header/>
+          <Header {...this.props}/>
           <div className="container">
             {this.props.children}
           </div>
