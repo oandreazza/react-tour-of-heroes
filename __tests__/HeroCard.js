@@ -5,18 +5,26 @@ import sinon from 'sinon';
 
 
 import HeroCard from '../src/components/HeroCard'
-import {CardHeader} from 'material-ui/Card';
+import {CardHeader, CardActions} from 'material-ui/Card';
 
 describe('<HeroCard />', () => {
+  var wrapper;
 
-  it('renders an `.icon-star`', () => {
-
+  beforeAll( () => {
     let hero = {
       name: 'Ramonzito' 
     }
-    const wrapper = shallow(<HeroCard hero={hero} />);
-    expect(wrapper.find(CardHeader)).to.have.length(1);
+    wrapper = shallow(<HeroCard hero={hero} />);
+  })
+
+  it('Should use CardHeader with name, subtitle and avatar when render HeroCard', () => {
+    expect(wrapper.contains(<CardHeader title="Ramonzito" subtitle="Marvel" avatar="unknowuser.png" />)).to.equal(true);
   });
+
+  it('Should use CardActions to perfom actions on the component', () => {
+    expect(wrapper.find(CardActions)).to.have.length(1)
+  })
+
 
 
 });
