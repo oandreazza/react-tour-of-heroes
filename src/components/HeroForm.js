@@ -5,6 +5,8 @@ import {Form, ControlLabel,FormGroup, Button,ButtonToolbar, Col} from 'react-boo
 import TextField from 'material-ui/TextField';
 import {Card, CardText, CardHeader} from 'material-ui/Card'
 import { Slider } from 'redux-form-material-ui';
+import DropDownField from './common/DropDownField'
+
 
 const FIELDS = {
   name: {
@@ -13,7 +15,7 @@ const FIELDS = {
   }
 }
 
-let renderForm = (field) => {
+let renderTextField = (field) => {
   return (
     <FormGroup  validationState={field.meta.error && field.meta.touched ? 'error' : null}  >
       <Col md={field.colSize ? field.colSize : 4}>
@@ -29,8 +31,20 @@ let renderForm = (field) => {
   )
 }
 
+let renderSelectField = (field) => {
+  return(
+    <DropDownField
+      label="Team"
+      source={field.values}
+    />
+  )
+}
+
 class HeroForm extends Component{
 
+  componentWillMount = () => {
+    this.props.getCategories()
+  }
   componentWillReceiveProps = (nextPros) => {
     if(this.props.geo.address.formatted_address !== nextPros.geo.address.formatted_address)
       this.props.blur('formatted_address', nextPros.geo.address.formatted_address)
@@ -55,8 +69,9 @@ class HeroForm extends Component{
                 titleStyle={{fontSize:25}}
               />
               <Form horizontal  onSubmit={this.props.handleSubmit}>
-                <Field component={renderForm} defaultValue="mauricio" mandatory={true} type="text" name="name" label="Name" placeholder="Type your name..."/>
-                <Field component={renderForm} onBlur={ (value) => this.handleLocation(value)} type="text" colSize={8} name="formatted_address" label="Address" placeholder="Type your address..."/>
+                <Field component={renderTextField} defaultValue="mauricio" mandatory={true} type="text" name="name" label="Name" placeholder="Type your name..."/>
+                <Field component={renderTextField} onBlur={ (value) => this.handleLocation(value)} type="text" colSize={8} name="formatted_address" label="Address" placeholder="Type your address..."/>
+                <Field component={renderSelectField} values={this.props.categories} name="category" />
                 <CardHeader
                   title="Power"
                   titleStyle={{fontSize:25}}

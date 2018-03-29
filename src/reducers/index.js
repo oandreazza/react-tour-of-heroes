@@ -4,6 +4,7 @@ import heroReducer from './hero'
 import notificationReducer from './notification'
 import geolocationReducer from './geolocation'
 import loadingReducer from './loading'
+import categoriesReducer from './categories'
 
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
     heroReducer,
     notificationReducer,
     geolocationReducer,
-    loadingReducer
+    loadingReducer,
+    categoriesReducer
 });

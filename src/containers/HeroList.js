@@ -9,7 +9,6 @@ const mapStateToProps = (state) =>{
   const heroesMap = _.map(heroes, (data,id) => {
     return {id, ...data}
   })
-  console.log(heroesMap);
   return{
       heroes: heroesMap
   }
