@@ -11,11 +11,11 @@ dependencies:
 
 test:
   override:
-    - npm test -- --coverage && codecov
+    - CI=true npm test -- --coverage && codecov
 
 deployment:
   hub:
     branch: master
     commands:
-      - npm run build
+      - CI=true npm run build
       - firebase deploy --token=$FIREBASE_TOKEN --non-interactive
