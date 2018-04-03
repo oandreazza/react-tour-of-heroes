@@ -6,11 +6,12 @@ dependencies:
   override:
     - npm install -g firebase-tools
     - npm install -g create-react-app
+    - npm install -g codecov
     - npm install
 
 test:
   override:
-    - npm test
+    - npm test -- --coverage && codecov
 
 deployment:
   hub:
