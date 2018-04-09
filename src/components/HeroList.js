@@ -5,6 +5,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import List from './List'
 import Modal from './common/Modal'
+import CardLoad from './common/CardLoad'
 
 const styles = {
   buttonAction: {
@@ -45,10 +46,11 @@ class HeroList extends Component{
   }
 
   render() {
-    const {heroes} = this.props;
+    const {heroes, loading} = this.props;
     const {buttonAction} = styles;
     return(
       <div>
+        <CardLoad show={loading} quantity={5}></CardLoad>
         <List
           dataSource={heroes}
           render={this.renderCard}

@@ -19,6 +19,7 @@
     "react-bootstrap": "^0.30.8",
     "react-chartjs": "^0.8.0",
     "react-dom": "^15.6.1",
+    "react-loading-shimmering": "^0.1.0",
     "react-redux": "^5.0.3",
     "react-router-dom": "^4.0.0",
     "react-router-redux": "^4.0.8",
@@ -43,7 +44,7 @@
   },
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverageFrom" : [
+    "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!<rootDir>/node_modules/"
     ]

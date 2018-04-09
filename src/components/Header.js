@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import AppBar from 'material-ui/AppBar';
-import CircularProgress from 'material-ui/CircularProgress';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -12,14 +11,12 @@ class Header extends Component{
     open: false
   }
   render() {
-    const {loading} = this.props
     return(
       <div>
       <AppBar
         title="Tour of Heroes"
         showMenuIconButton={true}
         onLeftIconButtonTouchTap={ () => this.setState({open:true})}
-        iconElementRight={loading ? <CircularProgress size={35} thickness={4} color="#FFF" /> : <span/>}
       />
       <Drawer
         docked={false}

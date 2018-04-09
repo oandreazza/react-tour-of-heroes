@@ -10,7 +10,8 @@ const mapStateToProps = (state) =>{
     return {id, ...data}
   })
   return{
-      heroes: heroesMap
+      heroes: heroesMap,
+      loading: state.appReducer.loadingReducer.loading
   }
 
 }
