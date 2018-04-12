@@ -27,23 +27,23 @@ jobs:
       - run:
           name: Running tests
           command: CI=true npm test -- --coverage && codecov
-    deploy:
-      working_directory: ~/react-tour-of-heroes
-      docker:
-        - image: circleci/node:6
-      steps:
-        - checkout
-        - restore_cache: # special step to restore the dependency cache 
-            key: dependency-cache-{{ checksum "package.json" }}
-        - run:
-            name: install deploy dependencies
-            command: npm install -g firebase-tools
-        - run:
-            name: Running build
-            command: CI=true npm run build
-        - run:
-            name: Deploy into firebase
-            command: firebase deploy --token=$FIREBASE_TOKEN --non-interactive
+  deploy:
+    working_directory: ~/react-tour-of-heroes
+    docker:
+      - image: circleci/node:6
+    steps:
+      - checkout
+      - restore_cache: # special step to restore the dependency cache 
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install deploy dependencies
+          command: npm install -g firebase-tools
+      - run:
+          name: Running build
+          command: CI=true npm run build
+      - run:
+          name: Deploy into firebase
+          command: firebase deploy --token=$FIREBASE_TOKEN --non-interactive
       
 workflows:
   version: 2
@@ -54,12 +54,13 @@ workflows:
           requires:
             - build
       - approve:
-        type: approval
-        requires:
-          - test
+          type: approval
+          requires:
+            - test
       - deploy:
           requires:
-            - aprrove
+            - approve
+
 
 
     
