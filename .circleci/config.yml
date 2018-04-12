@@ -6,11 +6,6 @@ jobs:
       - image: circleci/node:6
     steps:
       - checkout
-      - run:
-          name: install all dependencies
-          command: sudo npm install -g firebase-tools
-          command: sudo npm install -g create-react-app
-          command: sudo npm install -g codecov 
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install 
@@ -26,6 +21,9 @@ jobs:
       - checkout
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install tests dependencies
+          command: sudo npm install -g codecov 
       - run:
           name: Running tests
           command: CI=true npm test -- --coverage && codecov
