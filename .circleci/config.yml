@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/react-tour-of-heroes
     docker:
-      - image: circleci/node:6
+      - image: circleci/node:6.14
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache 
@@ -16,7 +16,7 @@ jobs:
   test:
     working_directory: ~/react-tour-of-heroes
     docker:
-      - image: circleci/node:6
+      - image: circleci/node:6.14
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache 
@@ -30,7 +30,7 @@ jobs:
   deploy:
     working_directory: ~/react-tour-of-heroes
     docker:
-      - image: circleci/node:6
+      - image: circleci/node:6.14
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache 
