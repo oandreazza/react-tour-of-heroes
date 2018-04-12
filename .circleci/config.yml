@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/react-tour-of-heroes
     docker:
-      - circleci/node:6.9.1
+      - image: circleci/node:6
     steps:
       - checkout
       - run:
@@ -20,6 +20,8 @@ jobs:
             - ./node_modules
   test:
     working_directory: ~/react-tour-of-heroes
+    docker:
+      - image: circleci/node:6
     steps:
       - run:
           name: Running tests
