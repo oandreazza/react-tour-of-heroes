@@ -37,7 +37,7 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install deploy dependencies
-          command: npm install -g firebase-tools
+          command: sudo npm install -g firebase-tools
       - run:
           name: Running build
           command: CI=true npm run build
