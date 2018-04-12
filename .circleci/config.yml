@@ -38,6 +38,7 @@ jobs:
       - run:
           name: install deploy dependencies
           command: sudo npm install -g firebase-tools
+          command: sudo npm install -g create-react-app
       - run:
           name: Running build
           command: CI=true npm run build
