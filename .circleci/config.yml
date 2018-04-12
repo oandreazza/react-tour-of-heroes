@@ -24,6 +24,8 @@ jobs:
       - image: circleci/node:6
     steps:
       - checkout
+      - restore_cache: # special step to restore the dependency cache 
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Running tests
           command: npm test
