@@ -34,7 +34,7 @@
     "sinon": "^4.4.10"
   },
   "devDependencies": {
-    "react-scripts": "0.7.0"
+    "react-scripts": "1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,9 +43,8 @@
     "eject": "react-scripts eject"
   },
   "jest": {
-    "coverageDirectory": "./coverage/",
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
+      "src/components/**/*.{js,jsx}",
       "!<rootDir>/node_modules/"
     ]
   }
