@@ -33,11 +33,11 @@ jobs:
       - image: circleci/node:6.14
     steps:
       - checkout
-      - run: npm install
+      - restore_cache: # special step to restore the dependency cache 
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install deploy dependencies
           command: sudo npm install -g firebase-tools
-          command: sudo npm install -g create-react-app
       - run:
           name: Running build
           command: CI=true npm run build
