@@ -11,7 +11,7 @@ const HeroCard = ({hero, deleteHandle}) => (
     <CardHeader
       title={hero.name}
       subtitle="Marvel"
-      avatar={require('../../assets/imgs/unknowuser.png')}
+      avatar={require('../assets/imgs/unknowuser.png')}
     />
     <CardText>
       <Chip>
