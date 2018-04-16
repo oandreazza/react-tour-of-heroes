@@ -1,6 +1,8 @@
 defaults: &defaults
+  working_directory: ~/tmp/workspace
   docker:
       - image: circleci/node:6.14
+
 
 version: 2
 jobs:
@@ -9,18 +11,16 @@ jobs:
     steps:
       - checkout
       - run: npm install 
-      - run: mkdir -p /tmp/workspace
       - run: cp -a /home/circleci/project/. /tmp/workspace/
       - persist_to_workspace:
-          root: /tmp
+          root: .
           paths:
-            - workspace
+            - .
   test:
-    <<: *defaults
-    workspace_dir: /tmp/workspace
+    <<: *defaults  
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/tmp/workspace
       - run:
           name: install tests dependencies
           command: sudo npm install -g codecov 
@@ -29,10 +29,9 @@ jobs:
           command: CI=true npm test -- --coverage && codecov
   deploy:
     <<: *defaults
-    workspace_dir: /tmp/workspace
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/tmp/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
