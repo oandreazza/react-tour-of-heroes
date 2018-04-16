@@ -12,6 +12,7 @@ jobs:
       - run: ls -lah
       - run: pwd
       - run: cp -a /home/circleci/project/. /tmp/workspace/
+      - run: ls -lah /tmp/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install 
