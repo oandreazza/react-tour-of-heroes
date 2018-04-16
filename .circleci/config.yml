@@ -37,8 +37,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/tmp/workspace
-      - restore_cache: # special step to restore the dependency cache 
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install deploy dependencies
           command: sudo npm install -g firebase-tools
