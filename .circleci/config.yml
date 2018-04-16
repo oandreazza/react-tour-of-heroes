@@ -19,12 +19,12 @@ jobs:
           paths:
             - ./node_modules
       - persist_to_workspace:
-          root: workspace
+          root: /tmp/workspace
   test:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/react-tour-of-heroes/workspace
+          at: ~/tmp/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -37,7 +37,7 @@ jobs:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/react-tour-of-heroes/workspace
+          at: ~/tmp/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
