@@ -1,5 +1,4 @@
 defaults: &defaults
-  working_directory: ~/react-tour-of-heroes
   docker:
       - image: circleci/node:6.14
 
@@ -10,6 +9,7 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p workspace
+      - run: ls -lah
       - run: cp -r . /tmp/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
