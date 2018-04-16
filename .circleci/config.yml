@@ -8,6 +8,7 @@ jobs:
   build:
     <<: *defaults
     steps:
+      - run: mkdir -p workspace
       - checkout
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
@@ -16,10 +17,13 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+      - persist_to_workspace:
+          root: workspace
   test:
     <<: *defaults
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/react-tour-of-heroes/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -31,7 +35,8 @@ jobs:
   deploy:
     <<: *defaults
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/react-tour-of-heroes/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
