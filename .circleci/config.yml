@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p workspace
-      - run: cp -r ./ workspace
+      - run: cp -r ~/react-tour-of-heroes ~/react-tour-of-heroes/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install 
