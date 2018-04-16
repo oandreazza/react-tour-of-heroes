@@ -21,12 +21,14 @@ jobs:
           paths:
             - ./node_modules
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: tmp
+          paths:
+            - workspace
   test:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/tmp/workspace
+          at: /tmp/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
