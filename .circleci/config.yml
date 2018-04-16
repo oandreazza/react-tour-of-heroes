@@ -1,9 +1,12 @@
+defaults: &defaults
+  working_directory: ~/react-tour-of-heroes
+  docker:
+      - image: circleci/node:6.14
+
 version: 2
 jobs:
   build:
-    working_directory: ~/react-tour-of-heroes
-    docker:
-      - image: circleci/node:6.14
+    <<: *defaults
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache 
@@ -14,9 +17,7 @@ jobs:
           paths:
             - ./node_modules
   test:
-    working_directory: ~/react-tour-of-heroes
-    docker:
-      - image: circleci/node:6.14
+    <<: *defaults
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache 
@@ -28,9 +29,7 @@ jobs:
           name: Running tests
           command: CI=true npm test -- --coverage && codecov
   deploy:
-    working_directory: ~/react-tour-of-heroes
-    docker:
-      - image: circleci/node:6.14
+    <<: *defaults
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache 
