@@ -11,10 +11,10 @@ jobs:
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache 
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: project-dependency-cache-{{ checksum "package.json" }}
       - run: npm install 
       - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: project-dependency-cache-{{ checksum "package.json" }}
           paths:
             - ~/tmp/workspace/node_modules
       - persist_to_workspace:
