@@ -8,8 +8,9 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run: mkdir -p workspace
+      - run: mkdir -p /tmp/workspace
       - run: ls -lah
+      - run: pwd
       - run: cp -r . /tmp/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
