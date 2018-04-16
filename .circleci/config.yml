@@ -8,18 +8,9 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run: mkdir -p /tmp/workspace
-      - run: ls -lah
-      - run: pwd
-      - run: cp -a /home/circleci/project/. /tmp/workspace/
-      - run: ls -lah /tmp/workspace
-      - restore_cache: # special step to restore the dependency cache 
-          key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install 
-      - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
+      - run: mkdir -p /tmp/workspace
+      - run: cp -a /home/circleci/project/. /tmp/workspace/
       - persist_to_workspace:
           root: /tmp
           paths:
@@ -29,8 +20,6 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/workspace
-      - restore_cache: # special step to restore the dependency cache 
-          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install tests dependencies
           command: sudo npm install -g codecov 
