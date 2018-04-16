@@ -10,6 +10,7 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p workspace
+      - run: cp -r ./ workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install 
