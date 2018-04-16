@@ -17,6 +17,7 @@ jobs:
             - workspace
   test:
     <<: *defaults
+    workspace_dir: /tmp/workspace
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -28,9 +29,10 @@ jobs:
           command: CI=true npm test -- --coverage && codecov
   deploy:
     <<: *defaults
+    workspace_dir: /tmp/workspace
     steps:
       - attach_workspace:
-          at: ~/tmp/workspace
+          at: /tmp/workspace
       - restore_cache: # special step to restore the dependency cache 
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
