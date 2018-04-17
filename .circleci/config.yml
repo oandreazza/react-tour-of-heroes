@@ -61,7 +61,7 @@ workflows:
                 - test
             filters:
                 tags:
-                    only: /^v.*/
+                    only: /^v*/
                 branches:
                     ignore: /.*/
       - deploy:   
@@ -69,7 +69,7 @@ workflows:
                 - approve
             filters:
                 tags:
-                    only: /^v.*/
+                    only: /^v*/
                 branches:
                     ignore: /.*/
             
