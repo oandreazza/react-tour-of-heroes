@@ -1,6 +1,6 @@
 {
   "name": "tour-of-heroes",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "dependencies": {
     "axios": "^0.15.3",
