@@ -63,7 +63,8 @@ workflows:
                 tags:
                     only: /^v*/
                 branches:
-                    ignore: /.*/
+                    ignore: 
+                        - master
       - deploy:   
             requires:
                 - approve
@@ -71,7 +72,8 @@ workflows:
                 tags:
                     only: /^v*/
                 branches:
-                    ignore: /.*/
+                    ignore:
+                        - master
             
         
         
