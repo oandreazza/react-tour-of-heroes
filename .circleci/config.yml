@@ -56,12 +56,23 @@ workflows:
           requires:
             - build
       - approve:
-          type: approval
-          requires:
-            - test
-      - deploy:
-          requires:
-            - approve
+            type: approval
+            requires:
+                - test
+            filters:
+                tags:
+                    only: /^v.*/
+      - deploy:   
+            requires:
+                - approve
+            filters:
+                tags:
+                    only: /^v.*/
+            
+        
+        
+        
+
 
 
 
