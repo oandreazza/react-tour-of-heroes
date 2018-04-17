@@ -62,12 +62,16 @@ workflows:
             filters:
                 tags:
                     only: /^v.*/
+                branches:
+                    ignore: /.*/
       - deploy:   
             requires:
                 - approve
             filters:
                 tags:
                     only: /^v.*/
+                branches:
+                    ignore: /.*/
             
         
         
