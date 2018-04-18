@@ -61,19 +61,21 @@ workflows:
                 - test
             filters:
                 tags:
-                    only: /^v*/
+                    only: 
+                        - /^v\d\.\d\.\d\w{0,5}$/
                 branches:
                     ignore: 
-                        - master
+                        - /.*/
       - deploy:   
             requires:
                 - approve
             filters:
                 tags:
-                    only: /^v*/
+                    only:
+                        - /^v\d\.\d\.\d\w{0,5}$/
                 branches:
                     ignore:
-                        - master
+                        - /.*/
             
         
         
