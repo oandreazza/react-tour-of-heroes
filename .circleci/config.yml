@@ -61,19 +61,13 @@ workflows:
                 - test
             filters:
                 tags:
-                    only: /^v*/
-                branches:
-                    ignore: 
-                        - master
+                    only: /v[0-9]+(\.[0-9]+)*/
       - deploy:   
             requires:
                 - approve
             filters:
                 tags:
-                    only: /^v*/
-                branches:
-                    ignore:
-                        - master
+                    only: /v[0-9]+(\.[0-9]+)*/
             
         
         
