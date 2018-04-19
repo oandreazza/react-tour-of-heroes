@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = (props) => (
   <div>
-    <h1>Hero Project 9</h1>
+    <h1>Hero Project 10</h1>
   </div>
 )
 
