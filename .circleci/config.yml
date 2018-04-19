@@ -51,10 +51,17 @@ workflows:
   version: 2
   build_test_deploy:
     jobs:
-      - build
+      - build:
+            filters:
+                tags:
+                    only: /.*/
+                
       - test:
-          requires:
-            - build
+            requires:
+                - build
+            filters:
+                tags:
+                    only: /.*/
       - approve:
             type: approval
             requires:
@@ -62,12 +69,16 @@ workflows:
             filters:
                 tags:
                     only: /v[0-9]+(\.[0-9]+)*/
+                branches:
+                    ignore: /.*/
       - deploy:   
             requires:
                 - approve
             filters:
                 tags:
                     only: /v[0-9]+(\.[0-9]+)*/
+                branches:
+                    ignore: /.*/
             
         
         
